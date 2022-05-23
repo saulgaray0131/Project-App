@@ -8,6 +8,7 @@ import android.view.Menu;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -16,12 +17,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sgwm.projectapp.databinding.ActivityMainBinding;
+import com.sgwm.projectapp.ui.login.AccountCreateFragment;
 import com.sgwm.projectapp.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private Fragment accountCreate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +37,11 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                accountCreate = new AccountCreateFragment();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.home_fragment, accountCreate, "LOGIN_TAG")
+                        .commit();
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
