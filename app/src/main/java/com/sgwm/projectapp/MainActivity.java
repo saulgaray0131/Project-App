@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.Menu;
 
 import com.amplifyframework.AmplifyException;
+import com.amplifyframework.auth.AuthUserAttributeKey;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
+import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.fragment.app.Fragment;
@@ -20,8 +22,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sgwm.projectapp.databinding.ActivityMainBinding;
-import com.sgwm.projectapp.ui.login.AccountCreateFragment;
-import com.sgwm.projectapp.ui.login.LoginActivity;
+import com.sgwm.projectapp.ui.login.AccountConfirmFragment;
+import com.sgwm.projectapp.ui.login.SignUpActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                accountCreate = new AccountCreateFragment();
+                accountCreate = new AccountConfirmFragment();
                 getSupportFragmentManager()
                         .beginTransaction()
                         .add(R.id.home_fragment, accountCreate, "LOGIN_TAG")
@@ -61,13 +63,19 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         try {
-            Amplify.configure(getApplicationContext());
             Log.i("MyAmplifyApp", "Initialized Amplify");
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            Amplify.configure(getApplicationContext());
         } catch (AmplifyException e) {
             e.printStackTrace();
         }
 
-        Intent myIntent = new Intent(this, LoginActivity.class);
+        Amplify.Auth.fetchAuthSession(
+                result -> Log.i("AmplifyQuickstart", result.toString()),
+                error -> Log.e("AmplifyQuickstart", error.toString())
+        );
+
+        Intent myIntent = new Intent(this, SignUpActivity.class);
         startActivity(myIntent);
     }
 
