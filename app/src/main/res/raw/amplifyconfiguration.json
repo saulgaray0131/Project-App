@@ -1,6 +1,19 @@
 {
     "UserAgent": "aws-amplify-cli/2.0",
     "Version": "1.0",
+    "api": {
+        "plugins": {
+            "awsAPIPlugin": {
+                "ProjectApp": {
+                    "endpointType": "GraphQL",
+                    "endpoint": "https://whsgn2gjxffhfidn7gsymvsyha.appsync-api.us-east-1.amazonaws.com/graphql",
+                    "region": "us-east-1",
+                    "authorizationType": "API_KEY",
+                    "apiKey": "da2-fek4obww4rh7tnxor6q5nn7che"
+                }
+            }
+        }
+    },
     "auth": {
         "plugins": {
             "awsCognitoAuthPlugin": {
@@ -49,6 +62,21 @@
                         "verificationMechanisms": [
                             "EMAIL"
                         ]
+                    }
+                },
+                "AppSync": {
+                    "Default": {
+                        "ApiUrl": "https://whsgn2gjxffhfidn7gsymvsyha.appsync-api.us-east-1.amazonaws.com/graphql",
+                        "Region": "us-east-1",
+                        "AuthMode": "API_KEY",
+                        "ApiKey": "da2-fek4obww4rh7tnxor6q5nn7che",
+                        "ClientDatabasePrefix": "ProjectApp_API_KEY"
+                    },
+                    "ProjectApp_AWS_IAM": {
+                        "ApiUrl": "https://whsgn2gjxffhfidn7gsymvsyha.appsync-api.us-east-1.amazonaws.com/graphql",
+                        "Region": "us-east-1",
+                        "AuthMode": "AWS_IAM",
+                        "ClientDatabasePrefix": "ProjectApp_AWS_IAM"
                     }
                 }
             }

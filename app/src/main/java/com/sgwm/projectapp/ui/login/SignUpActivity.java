@@ -1,5 +1,7 @@
 package com.sgwm.projectapp.ui.login;
 
+import static android.view.View.GONE;
+
 import android.app.Activity;
 
 import androidx.fragment.app.Fragment;
@@ -50,44 +52,9 @@ public class SignUpActivity extends AppCompatActivity {
 
         final EditText emailEditText = binding.emailSignup;
         final EditText passwordEditText = binding.passwordSignup;
-        final Button loginButton = binding.login;
+        final Button createButton = binding.createButton;
         final ProgressBar loadingProgressBar = binding.loading;
 
-        loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
-            @Override
-            public void onChanged(@Nullable LoginFormState loginFormState) {
-                if (loginFormState == null) {
-                    return;
-                }
-                loginButton.setEnabled(loginFormState.isDataValid());
-                if (loginFormState.getUsernameError() != null) {
-                    emailEditText.setError(getString(loginFormState.getUsernameError()));
-                }
-                if (loginFormState.getPasswordError() != null) {
-                    passwordEditText.setError(getString(loginFormState.getPasswordError()));
-                }
-            }
-        });
-
-        loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
-            @Override
-            public void onChanged(@Nullable LoginResult loginResult) {
-                if (loginResult == null) {
-                    return;
-                }
-                loadingProgressBar.setVisibility(View.GONE);
-                if (loginResult.getError() != null) {
-                    showLoginFailed(loginResult.getError());
-                }
-                if (loginResult.getSuccess() != null) {
-                    updateUiWithUser(loginResult.getSuccess());
-                }
-                setResult(Activity.RESULT_OK);
-
-                //Complete and destroy login activity once successful
-                finish();
-            }
-        });
 
         TextWatcher afterTextChangedListener = new TextWatcher() {
             @Override
@@ -106,6 +73,7 @@ public class SignUpActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
         };
+
         emailEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -120,7 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               //loadingProgressBar.setVisibility(View.VISIBLE);
@@ -134,10 +102,14 @@ public class SignUpActivity extends AppCompatActivity {
                         error -> Log.e("AuthQuickStart", "Sign up failed", error)
                 );
 
-                confirmFragment = new AccountConfirmFragment();
+                emailEditText.setVisibility(GONE);
+                passwordEditText.setVisibility(GONE);
+                createButton.setVisibility(GONE);
+
+                confirmFragment = new AccountConfirmFragment(emailEditText.getText().toString());
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.email_confirm_fragment, confirmFragment, "CONFIRM_TAG")
+                        .add(R.id.signup_fragment_layout, confirmFragment, "CONFIRM_TAG")
                         .commit();
             }
         });

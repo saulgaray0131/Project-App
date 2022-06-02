@@ -31,6 +31,11 @@ public class AccountConfirmFragment extends Fragment {
 
     private LoginViewModel loginViewModel;
     private FragmentAccountconfirmBinding binding;
+    private String email;
+
+    AccountConfirmFragment(String email) {
+        this.email = email;
+    }
 
     @Nullable
     @Override
@@ -70,7 +75,6 @@ public class AccountConfirmFragment extends Fragment {
         };
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);

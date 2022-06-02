@@ -42,11 +42,7 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                accountCreate = new AccountConfirmFragment();
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.home_fragment, accountCreate, "LOGIN_TAG")
-                        .commit();
+
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
