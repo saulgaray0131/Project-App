@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 error -> Log.e("AmplifyQuickstart", error.toString())
         );
 
-        Intent myIntent = new Intent(this, SignUpActivity.class);
+        Intent myIntent = new Intent(this, BrowseActivity.class);
         startActivity(myIntent);
     }
 

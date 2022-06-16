@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/drawable/browse_divider.xml" value="0.499" />
+        <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/activity_browse.xml" value="0.3921875" />
         <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/activity_login.xml" value="0.26927083333333335" />
         <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/activity_sign_up.xml" value="0.26927083333333335" />
@@ -10,6 +12,11 @@
         <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/content_main.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/fragment_accountconfirm.xml" value="0.26927083333333335" />
         <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/fragment_accountcreate.xml" value="0.309375" />
+        <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/fragment_gallery.xml" value="0.4140625" />
+        <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/fragment_slideshow.xml" value="0.4140625" />
+        <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/nav_header_main.xml" value="0.4140625" />
+        <entry key="..\:/Users/aaaam/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/sample_card.xml" value="0.434375" />
       </map>
     </option>
   </component>
